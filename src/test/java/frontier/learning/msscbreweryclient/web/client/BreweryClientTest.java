@@ -13,8 +13,10 @@ import org.springframework.web.client.RestTemplate;
 
 import frontier.learning.msscbreweryclient.web.model.BeerDTO;
 import frontier.learning.msscbreweryclient.web.model.BeerStyleEnum;
+import lombok.extern.slf4j.Slf4j;
 
 @SpringBootTest
+@Slf4j
 public class BreweryClientTest {
 
 	@Autowired
@@ -25,6 +27,7 @@ public class BreweryClientTest {
 
 	@Test
 	public void testGetBeerById() {
+		log.info("BreweryClientTest.testGetBeerById ::::");
 		BeerDTO beerDTO = breweryClient.getBeerById(UUID.randomUUID());
 		System.out.println(beerDTO.toString());
 		assertNotNull(beerDTO);
@@ -32,6 +35,7 @@ public class BreweryClientTest {
 
 	@Test
 	public void testCreateBeer() {
+		log.info("BreweryClientTest.testCreateBeer ::::");
 		BeerDTO beerDTO = BeerDTO.builder().beerName("KF-Strong").beerStyle(BeerStyleEnum.LAGER).upc(123321L).build();
 		URI uri = breweryClient.saveBeer(beerDTO);
 		assertNotNull(uri);
@@ -40,12 +44,14 @@ public class BreweryClientTest {
 
 	@Test
 	public void testUpdateBeer() {
+		log.info("BreweryClientTest.testUpdateBeer ::::");
 		BeerDTO beerDTO = BeerDTO.builder().beerName("New Beer").build();
 		breweryClient.updateBeer(UUID.randomUUID(), beerDTO);
 	}
 
 	@Test
 	public void testDeleteBeer() {
+		log.info("BreweryClientTest.testDeleteBeer ::::");
 		breweryClient.deleteBeer(UUID.randomUUID());
 	}
 
