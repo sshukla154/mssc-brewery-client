@@ -13,7 +13,7 @@ import org.springframework.web.client.RestTemplate;
 
 import lombok.extern.slf4j.Slf4j;
 
-@Component
+//@Component
 @Slf4j
 public class BlockingRestTemplateCustomizer implements RestTemplateCustomizer {
 
