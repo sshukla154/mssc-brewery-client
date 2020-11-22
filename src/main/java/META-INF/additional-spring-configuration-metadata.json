@@ -1,0 +1,27 @@
+{"properties": [
+  {
+    "name": "frontier.assignment.sockettimeout",
+    "type": "java.lang.String",
+    "description": "A description for 'frontier.assignment.sockettimeout'"
+  },
+  {
+    "name": "frontier.assignment.defaultmaxtotalconnections",
+    "type": "java.lang.String",
+    "description": "A description for 'frontier.assignment.defaultmaxtotalconnections'"
+  },
+  {
+    "name": "frontier.assignment.maxtotalconnections",
+    "type": "java.lang.String",
+    "description": "A description for 'frontier.assignment.maxtotalconnections'"
+  },
+  {
+    "name": "frontier.assignment.connectionrequesttimeout",
+    "type": "java.lang.String",
+    "description": "A description for 'frontier.assignment.connectionrequesttimeout'"
+  },
+  {
+    "name": "brewery.apihost",
+    "type": "java.lang.String",
+    "description": "A description for 'brewery.apihost'"
+  }
+]}
