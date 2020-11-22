@@ -19,7 +19,7 @@ import frontier.learning.msscbreweryclient.web.model.BeerDTO;
  * */
 
 @Component
-@PropertySource("file:src/main/resources/application.properties")
+//@PropertySource("file:src/main/resources/application.properties")
 //@ConfigurationProperties(prefix = "brewery", ignoreUnknownFields = false)
 public class BreweryClient {
 
