@@ -6,7 +6,6 @@ import org.apache.http.impl.client.DefaultConnectionKeepAliveStrategy;
 import org.apache.http.impl.client.HttpClients;
 import org.apache.http.impl.conn.PoolingHttpClientConnectionManager;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.boot.web.client.RestTemplateCustomizer;
 import org.springframework.context.annotation.PropertySource;
 import org.springframework.http.client.ClientHttpRequestFactory;
@@ -14,37 +13,40 @@ import org.springframework.http.client.HttpComponentsClientHttpRequestFactory;
 import org.springframework.stereotype.Component;
 import org.springframework.web.client.RestTemplate;
 
-import lombok.Data;
 import lombok.extern.slf4j.Slf4j;
 
 @Component
 @Slf4j
-@Data
-@ConfigurationProperties
+@PropertySource("file:src/main/resources/application.properties")
 public class BlockingRestTemplateCustomizerAssignment implements RestTemplateCustomizer {
 
-	@Value("${frontier.assignment.maxtotalconnections}")
 	private Integer maxTotalConnections;
-	
-	@Value("${frontier.assignment.defaultmaxtotalconnections}")
+
 	private Integer defaultMaxTotalConnections;
-	
-	@Value("${frontier.assignment.connectionrequesttimeout}")
+
 	private Integer connectionRequestTimeout;
-	
-	@Value("${frontier.assignment.sockettimeout}")
+
 	private Integer socketTimeout;
 
-//	public BlockingRestTemplateCustomizerAssignment(
-//			@Value("${frontier.assignment.maxtotalconnections}") Integer maxTotalConnections,
-//			@Value("${frontier.assignment.defaultmaxtotalconnections}") Integer defaultMaxTotalConnections,
-//			@Value("${frontier.assignment.connectionrequesttimeout}") Integer connectionRequestTimeout,
-//			@Value("${frontier.assignment.sockettimeout}") Integer socketTimeout) {
-//		this.maxTotalConnections = maxTotalConnections;
-//		this.defaultMaxTotalConnections = defaultMaxTotalConnections;
-//		this.connectionRequestTimeout = connectionRequestTimeout;
-//		this.socketTimeout = socketTimeout;
-//	}
+	@Value("${frontier.assignment.maxtotalconnections}")
+	public void setMaxTotalConnections(Integer maxTotalConnections) {
+		this.maxTotalConnections = maxTotalConnections;
+	}
+
+	@Value("${frontier.assignment.defaultmaxtotalconnections}")
+	public void setDefaultMaxTotalConnections(Integer defaultMaxTotalConnections) {
+		this.defaultMaxTotalConnections = defaultMaxTotalConnections;
+	}
+
+	@Value("${frontier.assignment.connectionrequesttimeout}")
+	public void setConnectionRequestTimeout(Integer connectionRequestTimeout) {
+		this.connectionRequestTimeout = connectionRequestTimeout;
+	}
+
+	@Value("${frontier.assignment.sockettimeout}")
+	public void setSocketTimeout(Integer socketTimeout) {
+		this.socketTimeout = socketTimeout;
+	}
 
 	@Override
 	public void customize(RestTemplate restTemplate) {
